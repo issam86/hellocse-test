@@ -2,18 +2,21 @@
 
 namespace Infrastructure\Models;
 
-use Domain\Admin\Enums\ProfileStatus;
+use Domain\Profile\Enums\ProfileStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Profile extends Model
 {
+    protected $table = 'profile';
+
     protected $fillable = [
         'first_name',
         'last_name',
         'status',
-        'image'
+        'admin_id',
+        'image',
     ];
 
     protected function casts(): array
@@ -23,14 +26,13 @@ class Profile extends Model
         ];
     }
 
-    public function getAdmin():BelongsTo
+    public function getAdmin(): BelongsTo
     {
         return $this->belongsTo(Admin::class);
     }
 
-    public function getComments():hasMany
+    public function getComments(): hasMany
     {
         return $this->hasMany(Comment::class);
     }
-
 }
