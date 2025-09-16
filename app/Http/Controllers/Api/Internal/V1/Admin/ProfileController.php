@@ -26,12 +26,19 @@ class ProfileController extends Controller
 
     }
 
-    public function update(Profile $profile, UpdateProfileRequest $request)
+    public function update(Profile $profile, UpdateProfileRequest $request): JsonResponse
     {
 
         $dto = UpdateProfileDto::fromArray(data: $request->safe()->toArray());
         $profile = $this->profileService->update($profile, $dto);
 
         return ProfileResource::make($profile)->response();
+    }
+
+    public function destroy(Profile $profile): JsonResponse
+    {
+        $deletedProfile = $this->profileService->delete($profile);
+
+        return ProfileResource::make($deletedProfile)->response();
     }
 }

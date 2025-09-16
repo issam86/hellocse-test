@@ -3,6 +3,7 @@
 namespace Domain\Profile\Services;
 
 use Domain\Profile\Actions\CreateProfileAction;
+use Domain\Profile\Actions\DeleteProfileAction;
 use Domain\Profile\Actions\ListActiveProfilesAction;
 use Domain\Profile\Actions\UpdateProfileAction;
 use Domain\Profile\Dto\CreateProfileDto;
@@ -16,6 +17,7 @@ class ProfileService
 
         private readonly CreateProfileAction $createProfileAction,
         private readonly UpdateProfileAction $updateProfileAction,
+        private readonly DeleteProfileAction $deleteProfileAction,
         private readonly ListActiveProfilesAction $listActiveProfilesAction,
     ) {}
 
@@ -35,5 +37,12 @@ class ProfileService
     public function update(Profile $profile, UpdateProfileDto $dto): Profile
     {
         return ($this->updateProfileAction)($profile, $dto);
+    }
+
+    public function delete(Profile $profile): Profile
+    {
+        ($this->deleteProfileAction)($profile);
+
+        return $profile;
     }
 }
