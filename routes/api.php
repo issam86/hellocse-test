@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\Internal\V1\Admin\AuthController;
 use App\Http\Controllers\Api\Internal\V1\Admin\ProfileController;
 use App\Http\Controllers\Api\Internal\V1\Public\ProfileController as PublicProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\Internal\V1\Admin\CommentController;
 
 Route::prefix('v1/admin/auth')->group(function () {
     Route::post('login', [AuthController::class, 'login'])->name('admin.auth.login');
@@ -18,4 +19,6 @@ Route::middleware('auth:sanctum')->prefix('v1/admin')->group(function () {
     Route::post('profiles', [ProfileController::class, 'create'])->name('admin.profile.create');
     Route::put('profiles/{profile}', [ProfileController::class, 'update'])->name('admin.profile.update');
     Route::delete('profiles/{profile}', [ProfileController::class, 'destroy'])->name('admin.profile.destroy');
+
+    Route::post('/profiles/{profile}/comments', [CommentController::class, 'create'])->name('admin.comment.create');
 });
