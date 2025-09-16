@@ -1,6 +1,6 @@
 <?php
 
-namespace Domain\Admin\Enums;
+namespace Domain\Profile\Enums;
 
 enum ProfileStatus: string
 {
