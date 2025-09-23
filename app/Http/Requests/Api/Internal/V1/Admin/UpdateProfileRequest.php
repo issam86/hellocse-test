@@ -18,4 +18,14 @@ class UpdateProfileRequest extends FormRequest
             'status' => ['required', Rule::enum(ProfileStatus::class)],
         ];
     }
+
+    public function attributes():array
+    {
+        return [
+            'first_name' => 'Prénom',
+            'last_name' => "Nom",
+            'image' => 'Image',
+            'status' => 'Statut'        ];
+
+    }
 }

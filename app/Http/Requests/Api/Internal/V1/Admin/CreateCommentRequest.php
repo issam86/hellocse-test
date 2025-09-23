@@ -12,4 +12,11 @@ class CreateCommentRequest extends FormRequest
             'content' => ['required', 'string', 'max:1000'],
         ];
     }
+
+    public function attributes(): array
+    {
+        return [
+            'content' => 'Commentaire',
+        ];
+    }
 }
