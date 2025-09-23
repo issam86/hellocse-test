@@ -25,10 +25,10 @@ class DeleteProfileActionTest extends TestCase
         $profile= ProfileFactory::new()
             ->setAdminId($admin->id)
             ->createOne();
-        ($this->action)($profile);
+        $result = ($this->action)($profile);
 
-        $this->assertTrue(true);
-        ;
+        $this->assertTrue($result);
+        $this->assertDatabaseMissing('profile', ['id'=>$profile->id]);
     }
 
 
