@@ -26,11 +26,17 @@ class Profile extends Model
         ];
     }
 
+    /**
+     * @return BelongsTo<Admin, $this>
+     */
     public function admin(): BelongsTo
     {
         return $this->belongsTo(Admin::class);
     }
 
+    /**
+     * @return HasMany <Comment, $this>
+     */
     public function comments(): hasMany
     {
         return $this->hasMany(Comment::class);
