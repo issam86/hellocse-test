@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use Database\Factories\CommentFactory;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Infrastructure\Models\Admin;
 use Infrastructure\Models\Profile;

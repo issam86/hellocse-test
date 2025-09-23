@@ -14,7 +14,7 @@ class AdminSeeder extends Seeder
         // Admin principal pour les tests
         AdminFactory::new()
 
-            ->setEmail('adminddddd@test.com')
+            ->setEmail('admin@test.com')
             ->setPassword('password123')
             ->createOne();
 

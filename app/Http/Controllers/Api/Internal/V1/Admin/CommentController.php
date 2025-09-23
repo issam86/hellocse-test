@@ -11,15 +11,14 @@ use Infrastructure\Models\Profile;
 
 class CommentController extends Controller
 {
-    public function __construct(private readonly CommentService $commentService)
-    {}
+    public function __construct(private readonly CommentService $commentService) {}
 
     public function create(Profile $profile, CreateCommentRequest $request)
     {
 
         $dto = CreateCommentDto::fromArray(data: $request->safe()->toArray(), profile_id: $profile->id);
         $comment = $this->commentService->create($dto, auth()->id());
+
         return CommentRessource::make($comment)->response();
     }
-
 }

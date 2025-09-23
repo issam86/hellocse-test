@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use Domain\Profile\Enums\ProfileStatus;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Infrastructure\Models\Admin;
 use Infrastructure\Models\Profile;
 
 /**
@@ -13,6 +12,7 @@ use Infrastructure\Models\Profile;
 class ProfileFactory extends Factory
 {
     protected $model = Profile::class;
+
     /**
      * Define the model's default state.
      *

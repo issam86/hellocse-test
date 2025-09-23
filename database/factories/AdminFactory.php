@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
-use Infrastructure\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
+use Infrastructure\Models\Admin;
 
 /**
  * @template TModelClass of Admin
@@ -27,8 +26,6 @@ class AdminFactory extends Factory
 
         ];
     }
-
-
 
     public function setEmail(string $email): static
     {

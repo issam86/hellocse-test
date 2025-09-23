@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Controllers\Api\Internal\V1\Admin\AuthController;
+use App\Http\Controllers\Api\Internal\V1\Admin\CommentController;
 use App\Http\Controllers\Api\Internal\V1\Admin\ProfileController;
 use App\Http\Controllers\Api\Internal\V1\Public\ProfileController as PublicProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\Internal\V1\Admin\CommentController;
 
 Route::prefix('v1/admin/auth')->group(function () {
     Route::post('login', [AuthController::class, 'login'])->name('admin.auth.login');

@@ -12,5 +12,4 @@ class CreateCommentRequest extends FormRequest
             'content' => ['required', 'string', 'max:1000'],
         ];
     }
-
 }

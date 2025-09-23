@@ -16,5 +16,4 @@ final readonly class CreateCommentDto
             profile_id: $profile_id,
         );
     }
-
 }

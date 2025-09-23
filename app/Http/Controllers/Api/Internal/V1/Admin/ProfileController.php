@@ -28,7 +28,6 @@ class ProfileController extends Controller
 
     public function update(Profile $profile, UpdateProfileRequest $request): JsonResponse
     {
-
         $dto = UpdateProfileDto::fromArray(data: $request->safe()->toArray());
         $profile = $this->profileService->update($profile, $dto);
 

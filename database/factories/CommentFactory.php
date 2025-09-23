@@ -11,6 +11,7 @@ use Infrastructure\Models\Comment;
 class CommentFactory extends Factory
 {
     protected $model = Comment::class;
+
     /**
      * Define the model's default state.
      *
