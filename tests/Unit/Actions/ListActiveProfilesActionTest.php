@@ -12,12 +12,15 @@ use Tests\TestCase;
 class ListActiveProfilesActionTest extends TestCase
 {
     use RefreshDatabase;
+
     private ListActiveProfilesAction $action;
-    public function setUp(): void
+
+    protected function setUp(): void
     {
         parent::setUp();
         $this->action = new ListActiveProfilesAction;
     }
+
     public function test_list_active_profiles_action(): void
     {
         $admin = AdminFactory::new()->createOne();
@@ -30,5 +33,4 @@ class ListActiveProfilesActionTest extends TestCase
         $this->assertEquals($profiles[0]->status, ProfileStatus::Active);
 
     }
-
 }

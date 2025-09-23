@@ -7,12 +7,12 @@ use Infrastructure\Models\Profile;
 
 class CreateProfileAction
 {
+    public function __construct(private readonly UploadImageAction $uploadImageAction) {}
 
-    public function __construct(private readonly UploadImageAction $uploadImageAction)
-    {}
     public function __invoke(CreateProfileDto $dto): Profile
     {
         $imagePath = ($this->uploadImageAction)($dto->image);
+
         return Profile::create([
             'first_name' => $dto->first_name,
             'last_name' => $dto->last_name,

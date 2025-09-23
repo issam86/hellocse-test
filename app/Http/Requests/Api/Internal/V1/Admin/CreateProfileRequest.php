@@ -19,13 +19,13 @@ class CreateProfileRequest extends FormRequest
         ];
     }
 
-    public function attributes():array
+    public function attributes(): array
     {
         return [
             'first_name' => 'Prénom',
-            'last_name' => "Nom",
+            'last_name' => 'Nom',
             'image' => 'Image',
-            'status' => 'Statut'
+            'status' => 'Statut',
         ];
     }
 }

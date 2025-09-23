@@ -7,8 +7,8 @@ use Infrastructure\Models\Profile;
 
 class UpdateProfileAction
 {
-    public function __construct(private readonly UploadImageAction $uploadImageAction)
-    {}
+    public function __construct(private readonly UploadImageAction $uploadImageAction) {}
+
     public function __invoke(Profile $profile, UpdateProfileDto $dto): Profile
     {
         $imagePath = ($this->uploadImageAction)($dto->image);

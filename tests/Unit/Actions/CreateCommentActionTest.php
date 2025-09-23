@@ -45,7 +45,7 @@ class CreateCommentActionTest extends TestCase
 
     }
 
-    public function test_comment_already_exists():void
+    public function test_comment_already_exists(): void
     {
         $admin = AdminFactory::new()->createOne();
         $profile = ProfileFactory::new()
