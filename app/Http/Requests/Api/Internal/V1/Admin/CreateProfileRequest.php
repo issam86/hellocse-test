@@ -14,6 +14,7 @@ class CreateProfileRequest extends FormRequest
         return [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'status' => ['required', Rule::enum(ProfileStatus::class)],
         ];
     }

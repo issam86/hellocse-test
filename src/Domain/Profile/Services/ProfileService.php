@@ -6,6 +6,7 @@ use Domain\Profile\Actions\CreateProfileAction;
 use Domain\Profile\Actions\DeleteProfileAction;
 use Domain\Profile\Actions\ListActiveProfilesAction;
 use Domain\Profile\Actions\UpdateProfileAction;
+use Domain\Profile\Actions\UploadImageAction;
 use Domain\Profile\Dto\CreateProfileDto;
 use Domain\Profile\Dto\UpdateProfileDto;
 use Illuminate\Database\Eloquent\Collection;
@@ -19,6 +20,7 @@ class ProfileService
         private readonly UpdateProfileAction $updateProfileAction,
         private readonly DeleteProfileAction $deleteProfileAction,
         private readonly ListActiveProfilesAction $listActiveProfilesAction,
+        private readonly UploadImageAction $uploadImageAction,
     ) {}
 
     public function create(CreateProfileDto $dto): Profile

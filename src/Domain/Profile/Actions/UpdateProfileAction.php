@@ -7,11 +7,15 @@ use Infrastructure\Models\Profile;
 
 class UpdateProfileAction
 {
+    public function __construct(private readonly UploadImageAction $uploadImageAction)
+    {}
     public function __invoke(Profile $profile, UpdateProfileDto $dto): Profile
     {
+        $imagePath = ($this->uploadImageAction)($dto->image);
         $profile->update([
             'first_name' => $dto->first_name,
             'last_name' => $dto->last_name,
+            'image' => $imagePath,
             'status' => $dto->status,
         ]);
 
