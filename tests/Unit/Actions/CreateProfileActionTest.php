@@ -54,7 +54,7 @@ class CreateProfileActionTest extends TestCase
     {
         $admin = AdminFactory::new()->createOne();
         Storage::fake('public');
-        $image = UploadedFile::fake()->image('profile.jpg',300, 300);
+        $image = UploadedFile::fake()->image('profile.jpg', 300, 300);
 
         $dto = new CreateProfileDto(
             first_name: 'John',

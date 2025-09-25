@@ -9,7 +9,7 @@ class UpdateProfileAction
 {
     public function __construct() {}
 
-    public function __invoke(Profile $profile, UpdateProfileDto $dto, ?string $imagePath=null): Profile
+    public function __invoke(Profile $profile, UpdateProfileDto $dto, ?string $imagePath = null): Profile
     {
 
         $profile->update([

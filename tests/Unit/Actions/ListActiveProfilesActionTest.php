@@ -28,7 +28,7 @@ class ListActiveProfilesActionTest extends TestCase
         ProfileFactory::new()
             ->setAdminId($admin->id)
             ->createMany(10);
-        $dto = new ListActiveProfilesDto(page:1, per_page: 10);
+        $dto = new ListActiveProfilesDto(page: 1, per_page: 10);
         $profiles = ($this->action)($dto);
 
         $this->assertNotEmpty($profiles);

@@ -11,6 +11,7 @@ class DeleteImageAction
         if (file_exists($imagePath)) {
             return Storage::disk('public')->delete($imagePath);
         }
+
         return true;
     }
 }

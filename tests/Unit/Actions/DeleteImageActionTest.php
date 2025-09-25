@@ -9,7 +9,7 @@ use Tests\TestCase;
 
 class DeleteImageActionTest extends TestCase
 {
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
         $this->action = new DeleteImageAction;
@@ -18,11 +18,10 @@ class DeleteImageActionTest extends TestCase
     public function test_delete_image_action(): void
     {
         Storage::fake('public');
-        $image = UploadedFile::fake()->image('profile.jpg',300, 300);
+        $image = UploadedFile::fake()->image('profile.jpg', 300, 300);
 
         $deletedImage = ($this->action)($image);
 
         $this->assertFalse(Storage::disk('public')->exists($deletedImage));
     }
-
 }

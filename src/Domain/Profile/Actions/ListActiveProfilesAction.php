@@ -4,7 +4,6 @@ namespace Domain\Profile\Actions;
 
 use Domain\Profile\Dto\ListActiveProfilesDto;
 use Domain\Profile\Enums\ProfileStatus;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Infrastructure\Models\Profile;
 

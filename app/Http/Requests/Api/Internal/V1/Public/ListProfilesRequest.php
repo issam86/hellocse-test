@@ -21,5 +21,4 @@ class ListProfilesRequest extends FormRequest
             'per_page' => 'Par page',
         ];
     }
-
 }

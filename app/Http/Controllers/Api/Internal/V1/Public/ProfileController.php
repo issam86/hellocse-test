@@ -17,7 +17,6 @@ class ProfileController
         $dto = ListActiveProfilesDto::fromArray($request->safe()->toArray());
         $profiles = $this->profileService->listActiveProfiles($dto);
 
-        ;
         return ProfileResource::collection($profiles)->response();
     }
 }

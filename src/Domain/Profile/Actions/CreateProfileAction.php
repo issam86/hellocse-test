@@ -9,7 +9,7 @@ class CreateProfileAction
 {
     public function __construct() {}
 
-    public function __invoke(CreateProfileDto $dto, ?string $imagePath=null): Profile
+    public function __invoke(CreateProfileDto $dto, ?string $imagePath = null): Profile
     {
 
         return Profile::create([

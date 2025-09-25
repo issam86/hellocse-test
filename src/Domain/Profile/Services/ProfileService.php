@@ -11,7 +11,6 @@ use Domain\Profile\Actions\UploadImageAction;
 use Domain\Profile\Dto\CreateProfileDto;
 use Domain\Profile\Dto\ListActiveProfilesDto;
 use Domain\Profile\Dto\UpdateProfileDto;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Infrastructure\Models\Profile;
 
@@ -30,6 +29,7 @@ class ProfileService
     public function create(CreateProfileDto $dto): Profile
     {
         $imagePath = ($this->uploadImageAction)($dto->image);
+
         return ($this->createProfileAction)($dto, $imagePath);
     }
 
@@ -44,13 +44,13 @@ class ProfileService
     public function update(Profile $profile, UpdateProfileDto $dto): Profile
     {
         $imagePath = ($this->uploadImageAction)($dto->image);
+
         return ($this->updateProfileAction)($profile, $dto, $imagePath);
     }
 
     public function delete(Profile $profile): Profile
     {
-        ($this->deleteImageAction)($profile->image)
-        ($this->deleteProfileAction)($profile);
+        ($this->deleteImageAction)($profile->image)($this->deleteProfileAction)($profile);
 
         return $profile;
     }
