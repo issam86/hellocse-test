@@ -7,8 +7,10 @@ use Domain\Profile\Actions\DeleteProfileAction;
 use Domain\Profile\Actions\ListActiveProfilesAction;
 use Domain\Profile\Actions\UpdateProfileAction;
 use Domain\Profile\Dto\CreateProfileDto;
+use Domain\Profile\Dto\ListActiveProfilesDto;
 use Domain\Profile\Dto\UpdateProfileDto;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Infrastructure\Models\Profile;
 
 class ProfileService
@@ -28,11 +30,11 @@ class ProfileService
     }
 
     /**
-     * @return Collection<Profile>
+     * @return LengthAwarePaginator<Profile>
      */
-    public function listActiveProfiles(): Collection
+    public function listActiveProfiles(ListActiveProfilesDto $dto): LengthAwarePaginator
     {
-        return ($this->listActiveProfilesAction)();
+        return ($this->listActiveProfilesAction)($dto);
     }
 
     public function update(Profile $profile, UpdateProfileDto $dto): Profile
