@@ -9,7 +9,7 @@ use Domain\Profile\Actions\UploadImageAction;
 use Domain\Profile\Dto\UpdateProfileDto;
 use Domain\Profile\Enums\ProfileStatus;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Http\Testing\File;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Infrastructure\Models\Profile;
 use Tests\TestCase;
@@ -55,7 +55,10 @@ class UpdateProfileActionTest extends TestCase
         $profile = ProfileFactory::new()
             ->setAdminId($admin->id)
             ->createOne();
-        $image = File::image('profile.jpg', '300', '300');
+
+        Storage::fake('public');
+        $image = UploadedFile::fake()->image('profile.jpg',300, 300);
+
         $dto = new UpdateProfileDto(
             first_name: 'John',
             last_name: 'Doe',

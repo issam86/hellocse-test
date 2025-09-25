@@ -8,7 +8,7 @@ use Domain\Profile\Actions\UploadImageAction;
 use Domain\Profile\Dto\CreateProfileDto;
 use Domain\Profile\Enums\ProfileStatus;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Http\Testing\File;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Infrastructure\Models\Profile;
 use Tests\TestCase;
@@ -56,7 +56,9 @@ class CreateProfileActionTest extends TestCase
     public function test_create_profile_action_with_image(): void
     {
         $admin = AdminFactory::new()->createOne();
-        $image = File::image('profile.jpg', '300', '300');
+        Storage::fake('public');
+        $image = UploadedFile::fake()->image('profile.jpg',300, 300);
+
         $dto = new CreateProfileDto(
             first_name: 'John',
             last_name: 'Doe',
