@@ -17,8 +17,12 @@ Route::prefix('v1/public')->group(function () {
 // Routes protégées ADMIN
 Route::middleware('auth:sanctum')->prefix('v1/admin')->group(function () {
     Route::post('profiles', [ProfileController::class, 'create'])->name('admin.profile.create');
-    Route::put('profiles/{profile}', [ProfileController::class, 'update'])->name('admin.profile.update');
+    Route::put('profiles/{profile}', [ProfileController::class, 'update'])
+        ->name('admin.profile.update')
+        ->whereNumber('profile');
     Route::delete('profiles/{profile}', [ProfileController::class, 'destroy'])->name('admin.profile.destroy');
 
-    Route::post('/profiles/{profile}/comments', [CommentController::class, 'create'])->name('admin.comment.create');
+    Route::post('/profiles/{profile}/comments', [CommentController::class, 'create'])
+        ->name('admin.comment.create')
+        ->whereNumber('profile');
 });
