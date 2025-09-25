@@ -4,7 +4,6 @@ namespace Tests\Unit\Actions;
 
 use Database\Factories\AdminFactory;
 use Domain\Profile\Actions\CreateProfileAction;
-use Domain\Profile\Actions\UploadImageAction;
 use Domain\Profile\Dto\CreateProfileDto;
 use Domain\Profile\Enums\ProfileStatus;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -22,9 +21,7 @@ class CreateProfileActionTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->action = new CreateProfileAction(
-            new UploadImageAction
-        );
+        $this->action = new CreateProfileAction;
     }
 
     public function test_create_profile_action_without_image(): void
@@ -68,7 +65,6 @@ class CreateProfileActionTest extends TestCase
         );
         $profile = ($this->action)($dto);
 
-        $this->assertNotNull($profile->image);
         Storage::disk('public')->assertExists($profile->image);
 
         $this->assertInstanceOf(Profile::class, $profile);

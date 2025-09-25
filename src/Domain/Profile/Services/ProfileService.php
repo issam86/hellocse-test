@@ -3,9 +3,11 @@
 namespace Domain\Profile\Services;
 
 use Domain\Profile\Actions\CreateProfileAction;
+use Domain\Profile\Actions\DeleteImageAction;
 use Domain\Profile\Actions\DeleteProfileAction;
 use Domain\Profile\Actions\ListActiveProfilesAction;
 use Domain\Profile\Actions\UpdateProfileAction;
+use Domain\Profile\Actions\UploadImageAction;
 use Domain\Profile\Dto\CreateProfileDto;
 use Domain\Profile\Dto\ListActiveProfilesDto;
 use Domain\Profile\Dto\UpdateProfileDto;
@@ -21,12 +23,14 @@ class ProfileService
         private readonly UpdateProfileAction $updateProfileAction,
         private readonly DeleteProfileAction $deleteProfileAction,
         private readonly ListActiveProfilesAction $listActiveProfilesAction,
-
+        private readonly UploadImageAction $uploadImageAction,
+        private readonly DeleteImageAction $deleteImageAction
     ) {}
 
     public function create(CreateProfileDto $dto): Profile
     {
-        return ($this->createProfileAction)($dto);
+        $imagePath = ($this->uploadImageAction)($dto->image);
+        return ($this->createProfileAction)($dto, $imagePath);
     }
 
     /**
@@ -39,11 +43,13 @@ class ProfileService
 
     public function update(Profile $profile, UpdateProfileDto $dto): Profile
     {
-        return ($this->updateProfileAction)($profile, $dto);
+        $imagePath = ($this->uploadImageAction)($dto->image);
+        return ($this->updateProfileAction)($profile, $dto, $imagePath);
     }
 
     public function delete(Profile $profile): Profile
     {
+        ($this->deleteImageAction)($profile->image)
         ($this->deleteProfileAction)($profile);
 
         return $profile;
