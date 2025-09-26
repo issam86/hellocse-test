@@ -138,7 +138,6 @@ class ProfileServiceTest extends TestCase
             ->setAdminId($admin->id)
             ->createOne();
 
-
         $dto = new UpdateProfileDto(
             first_name: 'Dupont',
             last_name: 'Dupond',
